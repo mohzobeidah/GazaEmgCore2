@@ -1,0 +1,53 @@
+﻿@model GazaEmgCore2.ViewModels.MovementForCustom
+
+    
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> نقل النزيل - @Model.QuarantinedPerson.FullName</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form 
+            asp-action="AddPersonMovement" asp-controller="Quarantine"
+            data-ajax="true" data-ajax-method="post" data-ajax-complete="completedAdd" data-ajax-failure ="failureAdd">
+
+                <div class="modal-body">
+                    <input type="hidden" hidden asp-for="@Model.OldHealthCenterId"  class="form-control" >
+                    <input type="hidden" hidden asp-for="@Model.QuarantinedPerson.Id" />
+                    <div class="form-group">
+                        <label for="" class="col-form-label">نقل من</label>
+
+                        <input type="text" asp-for="@Model.OldHealthCenter.Name" disabled class="form-control" >
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-form-label">نقل الى </label>
+                        <select type="text" class="form-control" asp-for="@Model.HealthCenterId" asp-items="@Model.HealthCenterList">
+                            <option value="" selected>--اختر--</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-form-label"> الامر</label>
+                        <input type="text" asp-for="@Model.Order" class="form-control" >
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">السبب</label>
+                        <textarea class="form-control" asp-for="@Model.Reason" id="message-text"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">حالته الصحية</label>
+                        <textarea class="form-control" asp-for="@Model.HealthStatus" id="message-text"></textarea>
+                    </div>
+
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                <button type="submit" class="btn btn-primary">حفظ النقل</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

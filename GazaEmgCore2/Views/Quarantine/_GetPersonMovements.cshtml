@@ -1,0 +1,51 @@
+﻿@model IEnumerable<GazaEmgCore2.Domain.Movement>
+
+<style>
+    td{
+
+        font-size:16px;
+    }
+</style>
+@{ 
+
+    int i = 1;
+}
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">المركز الصحي</th>
+                <th scope="col">السبب</th>
+                <th scope="col">الحالة الصحية</th>
+                <th scope="col">الامر</th>
+                <th scope="col"> تاريخ الحركة</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @{if (Model.Count() > 0)
+                {
+
+            @foreach (var item in Model.OrderByDescending(x=>x.Id))
+            {
+            <tr>
+                <th scope="row">@(i++)</th>
+                <td>@item.HealthCenter.Name</td>
+                <td>@item.Reason</td>
+                <td>@item.HealthStatus</td>
+                <td>@item.Order</td>
+                <td>@item.InsertDate.ToString("dd-MM-yyyy hh:mm  tt")</td>
+
+
+            </tr>
+            }
+
+                    }
+                    else
+                    {
+                    <tr><td class="text-center text-danger"  colspan="6"> <h5>لا يوجد تحركات لهذا النزيل</h5> </td></tr>
+                    }
+                }
+
+        </tbody>
+    </table>

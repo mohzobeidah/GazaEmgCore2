@@ -1,0 +1,292 @@
+﻿@model GazaEmgCore2.ViewModels.QuarantinedPersonVM
+@{
+    ViewData["Title"] = "AddPerson";
+}
+
+
+<style>
+
+    label {
+        font-size: 18px;
+    }
+
+    input, select, .spanForcheck, button {
+        font-size: 19px;
+    }
+
+    .row {
+        margin-bottom: 10px;
+    }
+</style>
+
+<h1>اضافة نزيل</h1>
+
+<div class="container ">
+
+
+    <form class="col-md-12"
+          asp-action="AddPerson" asp-controller="Quarantine"
+          data-ajax="true" data-ajax-method="post" data-ajax-complete="completed" data-ajax-failure ="failure">
+
+        <div class="row">
+            <div class="col-md-4 col-xl-3 border ">
+
+                <label for="IdentityNo">رقم الهوية </label>
+                <input asp-for="IdentityNo" type="text" class="form-control" style=" background-color:yellow" id="IdentityNo">
+                <small>   <span asp-validation-for="IdentityNo" class="text-danger"></span></small>
+
+
+
+            </div>
+
+            <div class="col-md-4 col-xl-3">
+
+                <label for="nationality"> الجنسية </label>
+                <p>
+                    @foreach (var item in Model.Nationalitieslist)
+                    {
+                        if (item.Id == 1)
+                        {
+                            <input type="radio" value="@item.Id" name="nationality" asp-for="nationality" class="radio-inline" checked style="margin:5px;"><span class="spanForcheck">@item.Name</span>
+                        }
+                        else
+                        {
+                            <input type="radio" value="@item.Id" name="nationality" asp-for="nationality" class="radio-inline" id="" style="margin:5px;"><span class="spanForcheck">@item.Name</span>
+
+                        }
+                    }
+                </p>
+                <small>   <span asp-validation-for="nationality" class="text-danger"></span></small>
+
+
+            </div>
+
+            <div class="col-md-4 col-xl-3">
+
+                <label for="IDType">  الوثيقة نوع   </label>
+                <p>
+                    @foreach (var item in Model.IdTypeEnumList)
+                    {
+                        if (item.Id == 1)
+                        {
+                            <input type="radio" value="@item.Id" name="IDType" asp-for="IDType" class="radio-inline" checked id="" style="margin:5px;"><span class="spanForcheck">@item.Name</span>
+                        }
+                        else
+                        {
+                            <input type="radio" value="@item.Id" name="IDType" asp-for="IDType" class="radio-inline" id="" style="margin:5px;"><span class="spanForcheck">@item.Name</span>
+                        }
+                    }
+                </p>
+                <small>   <span asp-validation-for="IDType" class="text-danger"></span></small>
+
+
+            </div>
+            <div class="col-md-4 col-xl-3 ">
+
+                <label for="">	مركز الحجر الصحي</label>
+                <select class="custom-select" asp-for="@Model.HealthCenter" asp-items="@Model.HealthCenterList">
+                    <option value="" selected>--اختر--</option>
+                </select>
+                <small>   <span asp-validation-for="HealthCenter" class="text-danger"></span></small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-xl-3">
+                <label for="Fname">الاسم الاول </label>
+                <input type="text" class="form-control" asp-for="@Model.Fname">
+                <small>   <span asp-validation-for="Fname" class="text-danger"></span></small>
+            </div>
+
+
+            <div class="col-md-4 col-xl-3">
+                <label class="" for="Sname">اسم الاب </label>
+                <input type="text" class="form-control" asp-for="@Model.Sname">
+                <small>   <span asp-validation-for="Sname" class="text-danger"></span></small>
+            </div>
+
+            <div class="col-md-4 col-xl-3">
+                <label for="Tname">اسم الجد </label>
+                <input type="text" class="form-control" asp-for="@Model.Tname">
+                <small>   <span asp-validation-for="Tname" class="text-danger"></span></small>
+            </div>
+
+            <div class="col-md-4 col-xl-3">
+                <label for="Lname">اسم  العائلة</label>
+                <input type="text" class="form-control" asp-for="@Model.Lname">
+                <small>   <span asp-validation-for="Lname" class="text-danger"></span></small>
+            </div>
+
+
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-md-4 col-xl-3">
+
+                <label for="Gender">الجنس</label>
+                <select class="custom-select" asp-for="Gender">
+                    <option value="" selected>--اختر--</option>
+
+                    @foreach (var item in Model.GenderEnumList)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+
+                </select>
+                <small><span asp-validation-for="Gender" class="text-danger"></span>.</small>
+            </div>
+            <div class="col-md-4 col-xl-3">
+                <label for="BirthDate">تاريخ الميلاد </label>
+                <input type="date" class="form-control" value="" asp-for="@Model.BirthDate">
+            </div>
+
+            <div class="col-md-4 col-xl-3">
+                <label for="PhoneNo">رقم الجوال</label>
+                <input type="text" class="form-control" asp-for="@Model.PhoneNo">
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col-md-4 col-xl-3">
+
+                <label for="Governorate">المحافظة</label>
+                <select class="custom-select" asp-for="@Model.Governorate" asp-items="@Model.GovernateList">
+                    <option value="" selected>--اختر--</option>
+
+                </select>
+                <small>   <span asp-validation-for="Governorate" class="text-danger"></span></small>
+            </div>
+            <div class="col-md-4 col-xl-3">
+
+                <label for="City">المدينة</label>
+                <select class="custom-select" asp-for="@Model.City">
+                    <option value="" selected>--اختر--</option>
+
+                </select>
+                <small>   <span asp-validation-for="City" class="text-danger"></span></small>
+            </div>
+
+            <div class="col-md-6 col-xl-6">
+
+                <label for="Address">العنوان بالتفصيل </label>
+                <input type="text" class="form-control" asp-for="@Model.Address">
+                <small>   <span asp-validation-for="Address" class="text-danger"></span></small>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4 col-xl-3">
+
+                <label for="ArrivingPointId">	الوصول من</label>
+                <select class="custom-select" asp-for="ArrivingPointId" asp-items="@Model.ArrivingPointList">
+                    <option value="" selected>--اختر--</option>
+                </select>
+                <small>   <span asp-validation-for="ArrivingPointId" class="text-danger"></span></small>
+            </div>
+            <div class="col-md-4 col-xl-3">
+
+                <label for="ArrivingPointDetailID">عن طريق</label>
+                <select asp-for="@Model.ArrivingPointDetailID" class="custom-select">
+                    <option value=""  selected>--اختر--</option>
+
+                </select>
+                <small>   <span asp-validation-for="ArrivingPointDetailID" class="text-danger"></span></small>
+            </div>
+
+            <div class="col-md-4 col-xl-3">
+                <label for="ArrivalDate">تاريخ الوصول </label>
+                <input type="date" asp-for="@Model.ArrivalDate" value="" class="form-control">
+            </div>
+            <div class="col-md-4 col-xl-3">
+                <label for="ArrivalTime">ساعة الوصول </label>
+                <input type="time" asp-for="@Model.ArrivalTime" class="form-control">
+            </div>
+
+
+
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4 col-xl-3">
+                <label for="CountryOfReturn">جهة القدوم </label>
+                <input asp-for="@Model.CountryOfReturn" class="form-control" type="text">
+            </div>
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-md-12 col-xl-12">
+                <label for="HealthStatus">الحالة الصحية</label>
+                <textarea asp-for="@Model.HealthStatus" class="form-control"></textarea>
+
+            </div>
+        </div>
+        <div class="row" style="margin-top:5px">
+            <div class="col-md-12 col-xl-12">
+                <button type="submit" class="btn btn-primary" style="padding:5px;"><i class="glyphicon glyphicon-floppy-disk" style="padding:10px;"></i>حـفـظ</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+@section Scripts{
+
+        <script>
+    $(function () {
+        $("#ArrivingPointId").on("change", function() {
+            var ArrivingPointId = $(this).val();
+            $("#ArrivingPointDetailID").empty();
+            $("#ArrivingPointDetailID").append("<option value=''  selected>--اختر--</option>");
+            $.getJSON(`GetArrivingPointDetail/${ArrivingPointId}`, (data) => {
+                $.each(data, function (i, item) {
+                    $("#ArrivingPointDetailID").append(`<option value="${item.id}">${item.name}</option>`);
+                });
+            });
+        });
+
+        $("#Governorate").on("change", function () {
+            var GovernorateId = $(this).val();
+            $("#City").empty();
+            $("#City").append("<option value='' selected>--اختر--</option>");
+            $.getJSON(`GetCities/${GovernorateId}`, (data) => {
+                $.each(data, function (i, item) {
+                    $("#City").append(`<option value="${item.id}">${item.name}</option>`);
+                });
+            });
+        });
+    });
+
+            completed = function (response) {
+                var result = response.responseJSON
+                console.log(response.responseJSON)
+                $.toast({
+                    heading: result.color,
+                    text: result.msg,
+                    showHideTransition: 'slide',
+                    icon: result.color
+                })
+            };
+
+            failure = function (jqXHR, status) {
+                $.toast({
+                    heading: 'Error',
+                    text: 'Uncaught Error.\n' + jqXHR.responseText,
+                    showHideTransition: 'fade',
+                    icon: 'error'
+                })
+            };
+           
+        </script>
+
+
+    
+}

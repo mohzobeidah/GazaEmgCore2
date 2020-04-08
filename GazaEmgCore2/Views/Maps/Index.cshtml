@@ -1,0 +1,16 @@
+﻿@model GazaEmgCore2.Domain.MapSetting
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <h1>@Model.Name</h1>
+
+
+<div class="row">
+    @if(@Model.Link != null) { 
+    <div class="col-md-12 col-xs-12 col-lg-12">
+        <iframe src="@Model.Link" style="width:100%;height: 100vh;"></iframe>
+
+    </div>
+    }
+</div>

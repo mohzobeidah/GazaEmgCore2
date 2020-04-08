@@ -1,0 +1,48 @@
+﻿@model GazaEmgCore2.Domain.QuarantinedPerson
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+<style>
+    button {
+        font-size: 25px !important;
+    }
+</style>
+<div id="accordion">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    المعلومات الشخصية
+                </button>
+            </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+
+
+                @await Component.InvokeAsync("GetPersonDetail", new { Id = Model.Id })
+
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    بيانات الحجر الصحي
+                </button>
+            </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                @await Component.InvokeAsync("GetPersonMovements", new { Id = Model.Id })
+
+            </div>
+        </div>
+    </div>
+
+</div>

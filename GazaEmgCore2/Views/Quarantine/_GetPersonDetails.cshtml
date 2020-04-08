@@ -1,0 +1,148 @@
+﻿@model GazaEmgCore2.Domain.QuarantinedPerson
+@{
+    ViewData["Title"] = "_GetPersonDetails";
+    Layout = null;
+}
+
+<style>
+
+    label {
+        font-size: 18px;
+    }
+
+    input, select, .spanForcheck, button {
+        font-size: 19px;
+    }
+
+    .row {
+        margin-bottom: 10px;
+    }
+</style>
+
+<h3 class="border" style="padding-right:15px;">  نزيل  - @Model.FullName</h3>
+
+<div class="container ">
+
+    <form class="col-md-12"
+          asp-action="AddPerson" asp-controller="Quarantine"
+          data-ajax="true" data-ajax-method="post" data-ajax-complete="completed" data-ajax-failure="failure">
+
+        <div class="row">
+            <div class="col-md-4 col-xl-3  ">
+
+                <label for="IdentityNo">رقم الهوية </label>
+                <input asp-for="IdentityNo" type="text" class="form-control" readonly id="IdentityNo">
+
+
+
+
+            </div>
+
+            <div class="col-md-4 col-xl-3">
+
+                <label for="nationality"> الجنسية </label>
+                <input asp-for="nationality" type="text" class="form-control" readonly>
+
+
+            </div>
+
+            <div class="col-md-4 col-xl-3">
+
+                <label for="IDType">  الوثيقة نوع   </label>
+                <input asp-for="IDType " type="text" class="form-control" readonly>
+
+
+            </div>
+            <div class="col-md-4 col-xl-3">
+                <label for="BirthDate">تاريخ الميلاد </label>
+                <input type="date" class="form-control" readonly  asp-for="BirthDate">
+            </div>
+        </div>
+        
+
+
+        <div class="row">
+
+            <div class="col-md-4 col-xl-3">
+
+                <label for="Gender">الجنس</label>
+                <input asp-for="gender" type="text" class="form-control" readonly >
+              
+            </div>
+          
+
+            <div class="col-md-4 col-xl-3">
+                <label for="PhoneNo">رقم الجوال</label>
+                <input type="text" class="form-control"  readonly asp-for="PhoneNo">
+            </div>
+
+        </div>
+        <div class="row">
+
+            <div class="col-md-4 col-xl-3">
+
+                <label for="Governorate">المحافظة</label>
+                <input asp-for="Governorates.Name" type="text" class="form-control" readonly>
+        
+            </div>
+            <div class="col-md-4 col-xl-3">
+
+                <label for="City">المدينة</label>
+                <input asp-for="Cities.Name" type="text" class="form-control" readonly>
+
+            </div>
+
+            <div class="col-md-6 col-xl-6">
+
+                <label for="Address">العنوان بالتفصيل </label>
+                <input type="text" class="form-control"  readonly asp-for="Address">
+             
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-4 col-xl-3">
+
+                <label for="ArrivingPointId">	الوصول من</label>
+                <input asp-for="ArrivingPoint.Name" type="text" class="form-control" readonly>
+
+            </div>
+            <div class="col-md-4 col-xl-3">
+
+                <label for="ArrivingPointDetailID">عن طريق</label>
+                <input asp-for="ArrivingPointDetails.Name" type="text" class="form-control" readonly>
+            </div>
+
+            <div class="col-md-4 col-xl-3">
+                <label for="ArrivalDate">تاريخ الوصول </label>
+                <input type="datetime" asp-for="ArrivalDate"  readonly class="form-control">
+            </div>
+
+            <div class="col-md-4 col-xl-3">
+                <label for="CountryOfReturn">جهة القدوم </label>
+                <input asp-for="CountryOfReturn" readonly class="form-control" type="text">
+            </div>
+
+
+
+        </div>
+
+       
+
+
+        <div class="row">
+
+            <div class="col-md-12 col-xl-12">
+                <label for="HealthStatus">الحالة الصحية</label>
+                <textarea asp-for="HealthStatus" readonly class="form-control"></textarea>
+
+            </div>
+        </div>
+        
+    </form>
+
+
+</div>
+

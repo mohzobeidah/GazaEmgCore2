@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200403141855_buildTables.cs" />
+    <Compile Remove="Migrations\20200403141855_buildTables.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\DataTables-1.10.20\Contributing.md" />
+    <None Include="wwwroot\DataTables-1.10.20\media\images\Sorting icons.psd" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\dataTables.bootstrap.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\dataTables.bootstrap.min.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\dataTables.bootstrap4.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\dataTables.bootstrap4.min.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\dataTables.dataTables.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\dataTables.dataTables.min.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\dataTables.foundation.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\dataTables.foundation.min.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\dataTables.jqueryui.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\dataTables.jqueryui.min.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\dataTables.material.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\dataTables.material.min.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\dataTables.semanticui.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\dataTables.semanticui.min.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\dataTables.uikit.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\dataTables.uikit.min.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\jquery.dataTables.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\jquery.dataTables.min.js" />
+    <None Include="wwwroot\DataTables-1.10.20\media\js\jquery.js" />
+    <None Include="wwwroot\DataTables-1.10.20\Readme.md" />
+    <None Include="wwwroot\jquery-toast-plugin-master\demos\js\jquery.toast.js" />
+    <None Include="wwwroot\jquery-toast-plugin-master\dist\jquery.toast.min.js" />
+    <None Include="wwwroot\jquery-toast-plugin-master\README.md" />
+    <None Include="wwwroot\jquery-toast-plugin-master\src\jquery.toast.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="bootstrap" Version="4.4.1" />
+    <PackageReference Include="datatables.net" Version="1.10.18" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+  </ItemGroup>
+
+</Project>

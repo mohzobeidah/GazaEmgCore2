@@ -1,0 +1,71 @@
+﻿@using GazaEmgCore2.ViewModels
+@model LoginViewModel
+@{
+    Layout = null;
+}
+
+<html dir="rtl">
+<head>
+
+    <link href="~/login/bootstrap.css" rel="stylesheet" />
+    <link href="~/login/loginCss.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+    <style>
+        .login-form {
+            font-size: 18px;
+        }
+
+        .form-control {
+            font-size: 40px;
+            font-weight: bold;
+        }
+    </style>
+    <meta name="description" login="The description of my page" />
+</head>
+<body id="LoginForm">
+    <div class="container">
+
+        <div class="login-form">
+            <div class="main-div">
+                <div class="panel">
+                    <h3>وزارة الداخلية </h3>
+
+                    <img src="~/login/img/sa.png" width="100" height="100" alt="logo" />
+
+                </div>
+
+              
+                <form asp-action="Login" asp-controller="Account" method="post">
+
+
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <div class="form-group">
+
+                        <input class="form-control" asp-for="Username" id="Username" type="text" placeholder="اسم المستخدم" />
+                        <span class="text-danger" asp-validation-for="Username"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" asp-for="Password" id="Password" type="password" placeholder="كلمة السر" />
+                        <span class="text-danger" asp-validation-for="Password"></span>
+
+
+                    </div>
+
+                    
+                    <div class="forgot pull-right">
+                        <a href="reset.html form-control">هل نسيت كلمة السر </a>
+                        <input type="checkbox" asp-for="RememberMe" class="form-check" />
+                    </div>
+                    <button type="submit" class="btn btn-primary form-control">دخــول</button>
+                </form>
+            </div>
+            <p class="botto-text"> <strong> الإدارة العامة للحاسوب</strong> &nbsp;&nbsp;@@ @DateTime.Now.Year.ToString()</p>
+        </div>
+    </div>
+
+
+</body>
+</html>
